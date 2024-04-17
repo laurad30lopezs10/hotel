@@ -2,6 +2,8 @@ package corte2.hotel;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -13,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity3 extends AppCompatActivity {
 
+    Button ZonasHumedas = (Button) findViewById(R.id.MenuZonasHumedas);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,18 +25,25 @@ public class MainActivity3 extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
-    }
-public void popupMenuAcciones(){
-    PopupMenu pop = new PopupMenu(this,MenuOpcionesPlus);
-    pop.getMenuInflater().inflate(R.id.MenuZonasHumedas);
-    pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            Toast.makeText(getBaseContext(),item.getTitle().toString(), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-    });
 
-}
+            ZonasHumedas.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    PopupMenu popup = new PopupMenu( MainActivity3.this, ZonasHumedas);
+                    popup.getMenuInflater().inflate(R.menu.item_menu,popup.getMenu());
+
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            Toast.makeText(MainActivity3.this, "Reserva para"+ item.getTitle(), Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+                    });
+                    popup.show();
+
+                }
+            }
+        ;});
+    }
+
 }
