@@ -115,6 +115,7 @@
             android:layout_height="61dp"
             android:background="#1A237E"
             android:fontFamily="monospace"
+            android:onClick="irregistro"
             android:text="@string/Registrar"
             android:textColor="#EAEAEA" />
     </LinearLayout>

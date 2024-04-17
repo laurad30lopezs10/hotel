@@ -11,8 +11,8 @@
     <string name="NumIdentidad_huesped" >Identification number</string>
     <string name="Telefono" >Phone</string>
     <string name="Email_huesoed" >e-Mail</string>
-    <string name="Usuario_huesped" />
-    <string name="Passwor_huesped" />
+    <string name="Usuario_huesped" >Create an user</string>
+    <string name="Passwor_huesped" >Create a password</string>
     <string name="Titulo_registro" >Enter your information to register</string>
     <string name="Titulo_reserva" >Make your reservation below</string>
 </resources>

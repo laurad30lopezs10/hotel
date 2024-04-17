@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,8 +14,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity3 extends AppCompatActivity {
-
-    Button ZonasHumedas = (Button) findViewById(R.id.MenuZonasHumedas);
+    ImageButton ZonasHumedas = (ImageButton)  findViewById(R.id.imageButton);
+    Button Inicio=(Button) findViewById(R.id.buttoninicio);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,24 +26,29 @@ public class MainActivity3 extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
 
-            ZonasHumedas.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    PopupMenu popup = new PopupMenu( MainActivity3.this, ZonasHumedas);
-                    popup.getMenuInflater().inflate(R.menu.item_menu,popup.getMenu());
-
-                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            Toast.makeText(MainActivity3.this, "Reserva para"+ item.getTitle(), Toast.LENGTH_SHORT).show();
-                            return false;
-                        }
-                    });
-                    popup.show();
-
-                }
+        });
+        ZonasHumedas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupMenu();
             }
-        ;});
+
+        });
+
     }
+
+    public void popupMenu(){
+        PopupMenu pop = new PopupMenu(this,ZonasHumedas);
+        pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        });
+        pop.show();
+    }
+
+
+
 
 }
