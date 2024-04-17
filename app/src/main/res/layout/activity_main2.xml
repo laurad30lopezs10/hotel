@@ -207,11 +207,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="#1A237E"
+            android:textColor="#EAEAEA"
             android:contentDescription="@string/GuardarRegistro"
             android:fontFamily="monospace"
             android:onClick="GuardarRegistro"
             android:text="@string/GuardarRegistro"
-            android:textColor="#EAEAEA" />
+           />
 
     </TableRow>
 </androidx.constraintlayout.widget.ConstraintLayout>

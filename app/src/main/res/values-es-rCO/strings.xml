@@ -18,4 +18,7 @@
     <string name="Passwor_huesped" >Crear una clave</string>
     <string name="Titulo_registro" >Ingrese sus datos para realizar el registros</string>
     <string name="Titulo_reserva" >Realice su reserva a contunuacion</string>
+    <string name="ElegirInicio" >"Elegir la fecha "</string>
+    <string name="ElegirFinal" >Elegir la Hora</string>
+    <string name="ReservaFinal" >Finalizar reserva</string>
 </resources>

@@ -17,4 +17,7 @@
     <string name="Passwor_huesped" >Create a password</string>
     <string name="Titulo_registro" >Enter your information to register</string>
     <string name="Titulo_reserva" >Make your reservation below</string>
+    <string name="ElegirInicio" >choose the date</string>
+    <string name="ElegirFinal" >Choose the time</string>
+    <string name="ReservaFinal" >Finish reservation</string>
 </resources>

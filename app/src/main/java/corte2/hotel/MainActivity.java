@@ -13,13 +13,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-private EditText usuario =(EditText) findViewById(R.id.UsuarioHuesped);
-private EditText password = (EditText) findViewById(R.id.PasswordHuesped);
-private Button Ingresar = (Button) findViewById(R.id.buttonIngresar);
-private Button irRegistrar = (Button) findViewById(R.id.buttonRegistrar);
+private EditText usuario;
+private EditText password;
+private Button Ingresar;
+private Button irRegistrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        usuario =(EditText) findViewById(R.id.UsuarioHuesped);
+        password = (EditText) findViewById(R.id.PasswordHuesped);
+        Ingresar = (Button) findViewById(R.id.buttonIngresar);
+        irRegistrar = (Button) findViewById(R.id.buttonRegistrar);
         setContentView(R.layout.activity_main);
     }
     public void Ingreso(View v) {

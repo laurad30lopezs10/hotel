@@ -13,24 +13,24 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity2 extends AppCompatActivity {
-    private EditText NombreH = (EditText) findViewById(R.id.IngresoNombreHuesped);
-    private EditText ApellidoH = (EditText) findViewById(R.id.IngresoApellidoHuesped);
-    private EditText IdentificacionH=(EditText) findViewById(R.id.IngresoNumIdentidadHuesped);
-    private EditText TelefonoH=(EditText) findViewById(R.id.IngresoTelHuesped);
-    private EditText EmailH=(EditText) findViewById(R.id.IngresoEmailHuesped);
-    private EditText UsuarioH=(EditText) findViewById(R.id.CreacionUsuarioHuesped);
-    private EditText PasswordH=(EditText) findViewById(R.id.CreacionPasswordHuesped);
-private Button GuardarH=(Button) findViewById(R.id.buttonGuardarRegistro);
+    private EditText NombreH;
+    private EditText ApellidoH;
+    private EditText IdentificacionH;
+    private EditText TelefonoH;
+    private EditText EmailH;
+    private EditText UsuarioH;
+    private EditText PasswordH;
+private Button GuardarH;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main2);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        NombreH = (EditText) findViewById(R.id.IngresoNombreHuesped);
+        ApellidoH = (EditText) findViewById(R.id.IngresoApellidoHuesped);
+        IdentificacionH=(EditText) findViewById(R.id.IngresoNumIdentidadHuesped);
+        TelefonoH=(EditText) findViewById(R.id.IngresoTelHuesped);
+        EmailH=(EditText) findViewById(R.id.IngresoEmailHuesped);
+        PasswordH=(EditText) findViewById(R.id.CreacionPasswordHuesped);
+        GuardarH=(Button) findViewById(R.id.buttonGuardarRegistro);
     }  public void GuardarRegistro(View v){
         Intent linear=new Intent(this, MainActivity.class);
         startActivity(linear);
