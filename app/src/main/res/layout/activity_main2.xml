@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/_8706120_rm222batch5_mind_01"
+    tools:context=".MainActivity2">
+
+    <TableRow
+        android:id="@+id/tableRow"
+        android:layout_width="423dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds">
+
+        <ImageView
+            android:id="@+id/Imagen_logo1"
+            android:layout_width="135dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/Logo"
+            app:srcCompat="@drawable/_433039_2369398" />
+
+        <TextView
+            android:id="@+id/NombreHotel1"
+            android:layout_width="209dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/Nombre"
+            android:fontFamily="@font/black_and_white_picture"
+            android:text="@string/Nombre"
+            android:textColor="#0C3168"
+            android:textSize="60sp" />
+    </TableRow>
+</androidx.constraintlayout.widget.ConstraintLayout>

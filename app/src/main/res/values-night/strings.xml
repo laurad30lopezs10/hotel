@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="IngresoUsuario" >User</string>
+    <string name="Nombre" >Serena light hotel</string>
+    <string name="IngresoPassword" >Password</string>
+    <string name="Ingresar" >Get into</string>
+    <string name="Registrar" >Register</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">hotel</string>
+    <string name="Logo">Hotel logo</string>
+    <string name="IngresoUsuario">"Usuario "</string>
+    <string name="Fondo">Background image</string>
+    <string name="Nombre">Serena light Hotel</string>
+    <string name="IngresoPassword">Password</string>
+    <string name="Ingresar">Get into</string>
+    <string name="Registrar">Register</string>
+</resources>

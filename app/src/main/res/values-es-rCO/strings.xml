@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">hotel</string>
+    <string name="Fondo">Imagen de fondo</string>
+    <string name="Logo">logo del hotel</string>
+    <string name="IngresoUsuario" >Usuario</string>
+    <string name="Nombre" >Hotel luz de serena</string>
+    <string name="IngresoPassword" >Contraseña</string>
+    <string name="Ingresar" >Ingresar</string>
+    <string name="Registrar" >Registrar</string>
+</resources>
