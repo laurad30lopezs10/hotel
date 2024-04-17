@@ -8,4 +8,14 @@
     <string name="IngresoPassword" >Contraseña</string>
     <string name="Ingresar" >Ingresar</string>
     <string name="Registrar" >Registrar</string>
+    <string name="GuardarRegistro" >Finalizar registro</string>
+    <string name="Nombre_huesped" >Nombre</string>
+    <string name="Apellido_huesped" >Apellido</string>
+    <string name="NumIdentidad_huesped" >Numero identificacion</string>
+    <string name="Telefono" >Telefono</string>
+    <string name="Email_huesoed" >Correo electronico</string>
+    <string name="Usuario_huesped" >Crear un usuario</string>
+    <string name="Passwor_huesped" >Crear una clave</string>
+    <string name="Titulo_registro" >Ingrese sus datos para realizar el registros</string>
+    <string name="Titulo_reserva" >Realice su reserva a contunuacion</string>
 </resources>

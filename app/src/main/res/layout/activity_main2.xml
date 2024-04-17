@@ -25,16 +25,193 @@
             android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:contentDescription="@string/Logo"
-            app:srcCompat="@drawable/_433039_2369398" />
+            app:srcCompat="@drawable/_433039_2369398"
+            tools:ignore="ImageContrastCheck" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/NombreHotel1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/Nombre"
+                android:fontFamily="@font/black_and_white_picture"
+                android:text="@string/Nombre"
+                android:textColor="#0C3168"
+                android:textSize="40sp"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/TituloReserva"
+                android:layout_width="match_parent"
+                android:layout_height="86dp"
+                android:contentDescription="@string/Titulo_registro"
+                android:fontFamily="@font/black_and_white_picture"
+                android:text="@string/Titulo_registro"
+                android:textColor="#0C1E39"
+                android:textSize="34sp" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="368dp"
+        android:layout_height="454dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="17dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableRow">
+
+        <EditText
+            android:id="@+id/IngresoNombreHuesped"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:contentDescription="@string/Nombre_huesped"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="text"
+            android:text="@string/Nombre_huesped"
+            android:textSize="24sp"
+            tools:ignore="EditableContentDescCheck" />
+
+        <EditText
+            android:id="@+id/IngresoApellidoHuesped"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:contentDescription="@string/Apellido_huesped"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="text"
+            android:text="@string/Apellido_huesped"
+            android:textSize="20sp"
+            tools:ignore="Autofill,EditableContentDescCheck,LabelFor" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/InstruccionNumeroIdentificacion"
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/NumIdentidad_huesped"
+                android:text="@string/NumIdentidad_huesped"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/InstruccionIngresoTelefono"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="@string/Telefono"
+                android:fontFamily="monospace"
+                android:text="@string/Telefono"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/IngresoNumIdentidadHuesped"
+                android:layout_width="183dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="@string/NumIdentidad_huesped"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:inputType="number"
+                tools:ignore="SpeakableTextPresentCheck,EditableContentDescCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+            <EditText
+                android:id="@+id/IngresoTelHuesped"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:fontFamily="monospace"
+                android:inputType="number"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/IngresoEmailHuesped"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:contentDescription="@string/Email_huesoed"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="textEmailAddress"
+            android:text="@string/Email_huesoed"
+            android:textSize="24sp"
+            tools:ignore="Autofill,EditableContentDescCheck,LabelFor,SpeakableTextPresentCheck" />
+
+        <EditText
+            android:id="@+id/CreacionUsuarioHuesped"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:contentDescription="@string/Usuario_huesped"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="text"
+            android:text="@string/Usuario_huesped"
+            android:textSize="24sp"
+            tools:ignore="Autofill,EditableContentDescCheck,LabelFor" />
 
         <TextView
-            android:id="@+id/NombreHotel1"
-            android:layout_width="209dp"
+            android:id="@+id/InstruccionCrearPassword"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:contentDescription="@string/Passwor_huesped"
+            android:text="@string/Passwor_huesped"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/CreacionPasswordHuesped"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:contentDescription="@string/Passwor_huesped"
+            android:ems="10"
+            android:fontFamily="monospace"
+            android:inputType="textPassword"
+            android:textSize="24sp"
+            tools:ignore="Autofill,DuplicateSpeakableTextCheck,EditableContentDescCheck,LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <TableRow
+        android:layout_width="194dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/buttonGuardarRegistro"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:contentDescription="@string/Nombre"
-            android:fontFamily="@font/black_and_white_picture"
-            android:text="@string/Nombre"
-            android:textColor="#0C3168"
-            android:textSize="60sp" />
+            android:background="#1A237E"
+            android:contentDescription="@string/GuardarRegistro"
+            android:fontFamily="monospace"
+            android:onClick="GuardarRegistro"
+            android:text="@string/GuardarRegistro"
+            android:textColor="#EAEAEA" />
+
     </TableRow>
 </androidx.constraintlayout.widget.ConstraintLayout>

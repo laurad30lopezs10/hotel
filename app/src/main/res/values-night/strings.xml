@@ -5,4 +5,14 @@
     <string name="IngresoPassword" >Password</string>
     <string name="Ingresar" >Get into</string>
     <string name="Registrar" >Register</string>
+    <string name="GuardarRegistro" >Finish registration</string>
+    <string name="Nombre_huesped" >Name</string>
+    <string name="Apellido_huesped" />
+    <string name="NumIdentidad_huesped" >Identification number</string>
+    <string name="Telefono" >Phone</string>
+    <string name="Email_huesoed" >e-Mail</string>
+    <string name="Usuario_huesped" />
+    <string name="Passwor_huesped" />
+    <string name="Titulo_registro" >Enter your information to register</string>
+    <string name="Titulo_reserva" >Make your reservation below</string>
 </resources>

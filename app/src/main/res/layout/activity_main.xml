@@ -25,7 +25,8 @@
             android:layout_width="135dp"
             android:layout_height="wrap_content"
             android:contentDescription="@string/Logo"
-            app:srcCompat="@drawable/_433039_2369398" />
+            app:srcCompat="@drawable/_433039_2369398"
+            tools:ignore="ImageContrastCheck" />
 
         <TextView
             android:id="@+id/NombreHotel1"
@@ -35,15 +36,16 @@
             android:fontFamily="@font/black_and_white_picture"
             android:text="@string/Nombre"
             android:textColor="#0C3168"
-            android:textSize="60sp" />
+            android:textSize="60sp"
+            tools:ignore="TextSizeCheck,VisualLintLocaleText" />
     </TableRow>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="369dp"
-        android:layout_height="248dp"
+        android:layout_width="379dp"
+        android:layout_height="245dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="34dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,17 +60,28 @@
             android:fontFamily="monospace"
             android:inputType="text"
             android:text="@string/IngresoUsuario"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            tools:ignore="Autofill,LabelFor" />
+
+        <TextView
+            android:id="@+id/InstruccionInPassword"
+            android:layout_width="149dp"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/IngresoPassword"
+            android:fontFamily="monospace"
+            android:text="@string/IngresoPassword"
+            android:textSize="20sp"
+            tools:ignore="TextSizeCheck" />
 
         <EditText
             android:id="@+id/PasswordHuesped"
             android:layout_width="match_parent"
-            android:layout_height="121dp"
+            android:layout_height="96dp"
             android:contentDescription="@string/IngresoPassword"
             android:ems="10"
             android:fontFamily="monospace"
             android:inputType="textPassword"
-            tools:ignore="SpeakableTextPresentCheck,EditableContentDescCheck" />
+            tools:ignore="Autofill,DuplicateSpeakableTextCheck,EditableContentDescCheck,LabelFor,SpeakableTextPresentCheck,VisualLintBounds" />
 
     </LinearLayout>
 
