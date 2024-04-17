@@ -79,30 +79,46 @@
             android:textSize="24sp"
             tools:ignore="Autofill,LabelFor" />
 
-        <LinearLayout
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="82dp"
-            android:orientation="horizontal">
+            android:layout_height="149dp">
 
-            <TextView
-                android:id="@+id/InstruccionNumeroIdentificacion"
-                android:layout_width="56dp"
-                android:layout_height="69dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/NumIdentidad_huesped"
-                android:text="@string/NumIdentidad_huesped"
-                android:textSize="18sp" />
+            <LinearLayout
+                android:layout_width="190dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/IngresoNumIdentidadHuesped"
-                android:layout_width="183dp"
-                android:layout_height="61dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/NumIdentidad_huesped"
-                android:ems="10"
-                android:fontFamily="monospace"
-                android:inputType="number"
-                tools:ignore="SpeakableTextPresentCheck,EditableContentDescCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/InstruccionNumeroIdentificacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/NumIdentidad_huesped"
+                    android:fontFamily="monospace"
+                    android:text="@string/NumIdentidad_huesped"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/IngresoNumIdentidadHuesped"
+                    android:layout_width="match_parent"
+                    android:layout_height="59dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/NumIdentidad_huesped"
+                    android:ems="10"
+                    android:fontFamily="monospace"
+                    android:inputType="number"
+                    tools:ignore="SpeakableTextPresentCheck,EditableContentDescCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/MenuZonasHumedas"
+                android:layout_width="147dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                app:srcCompat="@drawable/_89594_56862_o8ql9h_536"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </TableRow>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

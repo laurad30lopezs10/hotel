@@ -1,6 +1,9 @@
 package corte2.hotel;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,4 +24,16 @@ public class MainActivity3 extends AppCompatActivity {
             return insets;
         });
     }
+public void popupMenuAcciones(){
+    PopupMenu pop = new PopupMenu(this,MenuOpcionesPlus);
+    pop.getMenuInflater().inflate(R.id.MenuZonasHumedas);
+    pop.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            Toast.makeText(getBaseContext(),item.getTitle().toString(), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+    });
+
+}
 }
