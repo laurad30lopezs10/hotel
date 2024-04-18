@@ -85,38 +85,40 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="216dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="103dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="103dp"
-        android:layout_marginBottom="121dp"
-        android:orientation="vertical"
+
+    <Button
+        android:id="@+id/buttonIngresar"
+        android:layout_width="250dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="8dp"
+        android:background="#1A237E"
+        android:contentDescription="@string/Ingresar"
+        android:fontFamily="monospace"
+        android:onClick="Ingreso"
+        android:text="@string/Ingresar"
+        android:textColor="#EAEAEA"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRegistrar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <Button
+        android:id="@+id/buttonRegistrar"
+        android:layout_width="250dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="64dp"
+        android:background="#1A237E"
+        android:fontFamily="monospace"
+        android:onClick="irregistro"
+        android:text="@string/Registrar"
+        android:textColor="#EAEAEA"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.921" />
 
-        <Button
-            android:id="@+id/buttonIngresar"
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:background="#1A237E"
-            android:contentDescription="@string/Ingresar"
-            android:fontFamily="monospace"
-            android:onClick="Ingreso"
-            android:text="@string/Ingresar"
-            android:textColor="#EAEAEA" />
-
-        <Button
-            android:id="@+id/buttonRegistrar"
-            android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:background="#1A237E"
-            android:fontFamily="monospace"
-            android:onClick="irregistro"
-            android:text="@string/Registrar"
-            android:textColor="#EAEAEA" />
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
