@@ -33,6 +33,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main3);
 
 
             ZonasHumedas = (ImageButton) findViewById(R.id.imageButton);
