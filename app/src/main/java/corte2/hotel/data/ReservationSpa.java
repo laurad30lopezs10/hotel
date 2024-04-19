@@ -1,5 +1,6 @@
 package corte2.hotel.data;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 
@@ -30,6 +31,7 @@ public class ReservationSpa {
         return values;
     }
 
+    @SuppressLint("Range")
     public ReservationSpa(Cursor cursor){
         this.num_reservation = cursor.getInt( cursor.getColumnIndex( ReservationSpaEntry.col_num_reservation));
         this.usuario = cursor.getString( cursor.getColumnIndex( HuespedEntry.col_usuario ));

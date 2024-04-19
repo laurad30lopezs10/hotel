@@ -2,6 +2,8 @@ package corte2.hotel.data;
 
 import corte2.hotel.data.HuespedContract.HuespedEntry;
 import corte2.hotel.data.TelefonoContract.TelefonoEntry;
+
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 
@@ -21,6 +23,7 @@ public class Telefono {
         return values;
     }
 
+    @SuppressLint("Range")
     public Telefono(Cursor cursor){
         this.usuario = cursor.getString( cursor.getColumnIndex( HuespedEntry.col_usuario ) );
         this.telefono = cursor.getLong( cursor.getColumnIndex( TelefonoEntry.col_telefono ) );

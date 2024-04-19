@@ -14,7 +14,8 @@ import corte2.hotel.data.TelefonoContract.TelefonoEntry;
 import corte2.hotel.data.ReservationSpaContract.ReservationSpaEntry;
 import corte2.hotel.data.SpaContract.SpaEntry;
 
-public class HotelDBHelper extends SQLiteOpenHelper {
+public class
+HotelDBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "hotel";
     private static final int DATABASE_VERSION = 1;
@@ -48,10 +49,10 @@ public class HotelDBHelper extends SQLiteOpenHelper {
 
 
         sqLiteDatabase.execSQL("CREATE TABLE " + ReservationSpaEntry.TABLE_NAME + " ( " +
-                ReservationSpaEntry.col_num_reservation+"INT NOT NULL, " +
-                HuespedEntry.col_usuario+"TEXT NOT NULL, " +
-                ReservationSpaEntry.col_date_reservation+"DATE NOT NULL, " +
-                ReservationSpaEntry.col_zone_spa+"INT NOT NULL, "+
+                ReservationSpaEntry.col_num_reservation+" INT NOT NULL, " +
+                HuespedEntry.col_usuario+" TEXT NOT NULL, " +
+                ReservationSpaEntry.col_date_reservation+" DATE NOT NULL, " +
+                ReservationSpaEntry.col_zone_spa+" INT NOT NULL, "+
                 SpaEntry.col_cod_zone+" INT NOT NULL, "+
                 "PRIMARY KEY ("+ReservationSpaEntry.col_num_reservation+","+HuespedEntry.col_usuario+","+
                 ReservationSpaEntry.col_date_reservation+"),"+
@@ -165,4 +166,6 @@ public class HotelDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+
 }

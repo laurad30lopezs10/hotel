@@ -1,5 +1,6 @@
 package corte2.hotel.data;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 
@@ -27,6 +28,7 @@ public class Huesped {
         return values;
     }
 
+    @SuppressLint("Range")
     public Huesped(Cursor cursor){
         this.usuario = cursor.getString( cursor.getColumnIndex( HuespedEntry.col_usuario ) );
         this.password = cursor.getString( cursor.getColumnIndex( HuespedEntry.col_password ) );

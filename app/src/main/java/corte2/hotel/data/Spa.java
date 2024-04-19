@@ -1,5 +1,6 @@
 package corte2.hotel.data;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.database.Cursor;
 
@@ -28,6 +29,7 @@ public class Spa {
         return values;
     }
 
+    @SuppressLint("Range")
     public Spa(Cursor cursor){
         this.cod_zone = cursor.getInt( cursor.getColumnIndex( SpaContract.SpaEntry.col_cod_zone ) );
         this.name_zone = cursor.getString( cursor.getColumnIndex( SpaContract.SpaEntry.col_name_zone ) );
