@@ -33,63 +33,64 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-          super.onCreate(savedInstanceState);
-          setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
 
-          usuario = findViewById(R.id.UsuarioHuesped);
-          password = findViewById(R.id.PasswordHuesped);
-          Ingresar = findViewById(R.id.buttonIngresar);
-          irRegistrar = findViewById(R.id.buttonRegistrar);
-          db = new HotelDBHelper(this);
+        usuario = findViewById(R.id.UsuarioHuesped);
+        password = findViewById(R.id.PasswordHuesped);
+        Ingresar = findViewById(R.id.buttonIngresar);
+        irRegistrar = findViewById(R.id.buttonRegistrar);
+        db = new HotelDBHelper(this);
 
-          Ingresar.setOnClickListener(this);
-          Intent intent = getIntent();
-          if (intent!=null){
+        Ingresar.setOnClickListener(this);
+        Intent intent = getIntent();
+        if (intent!=null){
             mParam1 = intent.getStringExtra("ARG_PRAM1");
             mParam2 = intent.getStringExtra("ARG_PARAM2");
-          }
+        }
     }
 
 
 
-  public void Ingreso(View v) {
-        Intent linear = new Intent(this, MainActivity2.class);
-        startActivity(linear);
-    }
-
-    public void irregistro(View v) {
+    public void Ingreso(View v) {
         Intent linear = new Intent(this, MainActivity3.class);
         startActivity(linear);
     }
 
-  @Override
-  public void onClick(View v) {
-      switch (v.getId()){
-        case R.id.buttonIngresar:
+    public void irregistro(View v) {
+        Intent linear = new Intent(this, MainActivity2.class);
+        startActivity(linear);
+    }
 
-          if (usuario.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
-            Toast.makeText(this,"LLENE LOS CAMPOS",Toast.LENGTH_LONG).show();
-          }else{
-            Cursor cursor = db.getHuespedByUser(usuario.getText().toString(), password.getText().toString());
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.buttonIngresar:
 
-            if(cursor != null &&cursor.moveToNext()){
-              Huesped hdp = new Huesped(cursor);
-              Ingreso(v);
-            }else{
-              Toast.makeText(this,"Credenciales Invalidas",Toast.LENGTH_LONG).show();
-            }
-          }
+                if (usuario.getText().toString().isEmpty() || password.getText().toString().isEmpty()) {
+                    Toast.makeText(this,"LLENE LOS CAMPOS",Toast.LENGTH_LONG).show();
+                }else{
+                    Cursor cursor = db.getHuespedByUser(usuario.getText().toString(), password.getText().toString());
+
+                    if(cursor != null &&cursor.moveToNext()){
+                        Huesped hdp = new Huesped(cursor);
+                        irregistro(v);
+
+                    }else{
+                        Toast.makeText(this,"Credenciales Invalidas",Toast.LENGTH_LONG).show();
+                    }
+                }
 
 
-          break;
-        case R.id.buttonRegistrar:
+                break;
+            case R.id.buttonRegistrar:
 
-          irregistro(v);
+                Ingreso(v);
 
-          break;
-      }
-  }
+                break;
+        }
+    }
 
   /*public Cursor getHuespedByUser(String usuario, String password) {
     SQLiteDatabase db = HotelDBHelper.getReadableDatabase();

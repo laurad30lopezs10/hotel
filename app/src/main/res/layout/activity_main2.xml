@@ -210,9 +210,11 @@
             android:textColor="#EAEAEA"
             android:contentDescription="@string/GuardarRegistro"
             android:fontFamily="monospace"
-            android:onClick="GuardarRegistro"
-            android:text="@string/GuardarRegistro"
-           />
+            android:onClick="guardarRegistro"
+            android:text="@string/GuardarRegistro" />
 
     </TableRow>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
