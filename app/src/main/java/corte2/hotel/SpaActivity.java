@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
 
-public class MainActivity3 extends AppCompatActivity implements View.OnClickListener {
+public class SpaActivity extends AppCompatActivity implements View.OnClickListener {
     ImageButton ZonasHumedas;
     Button Fecha;
     Button hora;
@@ -29,7 +29,7 @@ public class MainActivity3 extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_spa);
 
         ZonasHumedas = findViewById(R.id.imageButton);
         Fecha = findViewById(R.id.buttonFecha);

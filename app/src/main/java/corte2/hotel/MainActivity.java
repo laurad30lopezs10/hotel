@@ -1,10 +1,7 @@
 package corte2.hotel;
 
-import static java.security.AccessController.getContext;
-
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,9 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import corte2.hotel.data.HotelDBHelper;
-import corte2.hotel.data.HotelDBHelper.*;
 import corte2.hotel.data.Huesped;
-import corte2.hotel.data.HuespedContract;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText usuario;
@@ -34,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
 
         usuario = findViewById(R.id.UsuarioHuesped);
@@ -54,17 +49,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void Ingreso(View v) {
-        Intent linear = new Intent(this, MainActivity3.class);
+        Intent linear = new Intent(this, SpaActivity.class);
         startActivity(linear);
     }
 
     public void irregistro(View v) {
-        Intent linear = new Intent(this, MainActivity2.class);
+        Intent linear = new Intent(this, RegisterActivity.class);
         startActivity(linear);
     }
 
     @Override
     public void onClick(View v) {
+      Toast.makeText(this,"SI SIRVE PENDEJO"+v.getId(),Toast.LENGTH_LONG).show();
         switch (v.getId()){
             case R.id.buttonIngresar:
 
@@ -75,20 +71,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     if(cursor != null &&cursor.moveToNext()){
                         Huesped hdp = new Huesped(cursor);
-                        irregistro(v);
+                        Intent linear = new Intent(this, SpaActivity.class);
+                        startActivity(linear);
 
                     }else{
                         Toast.makeText(this,"Credenciales Invalidas",Toast.LENGTH_LONG).show();
                     }
                 }
 
-
                 break;
             case R.id.buttonRegistrar:
 
-                Ingreso(v);
 
-                break;
+              Intent linear = new Intent(this, RegisterActivity.class);
+              startActivity(linear);
+
+              break;
         }
     }
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/_8706120_rm222batch5_mind_01"
-    tools:context=".MainActivity2">
+    tools:context=".RegisterActivity">
 
     <TableRow
         android:id="@+id/tableRow"
@@ -20,13 +20,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="VisualLintBounds">
 
-        <ImageView
-            android:id="@+id/Imagen_logo1"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/Logo"
-            app:srcCompat="@drawable/_433039_2369398"
-            tools:ignore="ImageContrastCheck" />
+      <ImageView
+        android:id="@+id/Imagen_logo1"
+        android:layout_width="103dp"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/Logo"
+        app:srcCompat="@drawable/_433039_2369398"
+        tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,15 +44,15 @@
                 android:textSize="40sp"
                 tools:ignore="TextSizeCheck" />
 
-            <TextView
-                android:id="@+id/TituloReserva"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:contentDescription="@string/Titulo_registro"
-                android:fontFamily="@font/black_and_white_picture"
-                android:text="@string/Titulo_registro"
-                android:textColor="#0C1E39"
-                android:textSize="34sp" />
+          <TextView
+            android:id="@+id/TituloReserva"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:contentDescription="@string/Titulo_registro"
+            android:fontFamily="@font/black_and_white_picture"
+            android:text="@string/Titulo_registro"
+            android:textColor="#0C1E39"
+            android:textSize="34sp" />
         </LinearLayout>
 
     </TableRow>
@@ -82,19 +82,19 @@
             android:textSize="24sp"
             tools:ignore="EditableContentDescCheck" />
 
-        <EditText
-            android:id="@+id/IngresoApellidoHuesped"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:contentDescription="@string/Apellido_huesped"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:inputType="text"
-            android:text="@string/Apellido_huesped"
-            android:textSize="20sp"
-            tools:ignore="Autofill,EditableContentDescCheck,LabelFor" />
+      <EditText
+        android:id="@+id/IngresoApellidoHuesped"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:contentDescription="@string/Apellido_huesped"
+        android:ems="10"
+        android:fontFamily="monospace"
+        android:inputType="text"
+        android:text="@string/Apellido_huesped"
+        android:textSize="20sp"
+        tools:ignore="Autofill,EditableContentDescCheck,LabelFor" />
 
-        <LinearLayout
+      <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal">

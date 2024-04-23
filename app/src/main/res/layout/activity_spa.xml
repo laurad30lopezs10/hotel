@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/_8706120_rm222batch5_mind_01"
-    tools:context=".MainActivity3">
+    tools:context=".SpaActivity">
 
     <TableRow
         android:id="@+id/tableRow"
