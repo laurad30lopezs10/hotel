@@ -1,202 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/_8706120_rm222batch5_mind_01"
-    tools:context=".SpaActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <TableRow
-        android:id="@+id/tableRow"
-        android:layout_width="423dp"
-        android:layout_height="132dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="VisualLintBounds">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de inicio:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"/>
 
-        <ImageView
-            android:id="@+id/Imagen_logo1"
-            android:layout_width="135dp"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/Logo"
-            app:srcCompat="@drawable/_433039_2369398"
-            tools:ignore="ImageContrastCheck" />
+    <Button
+        android:id="@+id/buttonFechaInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar fecha de inicio"
+        android:layout_marginBottom="16dp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fecha de finalización:"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"/>
 
-            <TextView
-                android:id="@+id/NombreHotel1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:contentDescription="@string/Nombre"
-                android:fontFamily="@font/black_and_white_picture"
-                android:text="@string/Nombre"
-                android:textColor="#0C3168"
-                android:textSize="40sp"
-                tools:ignore="TextSizeCheck" />
+    <Button
+        android:id="@+id/buttonFechaFin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar fecha de finalización"
+        android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:id="@+id/TituloReserva"
-                android:layout_width="match_parent"
-                android:layout_height="86dp"
-                android:contentDescription="@string/Titulo_reserva"
-                android:fontFamily="@font/black_and_white_picture"
-                android:text="@string/Titulo_reserva"
-                android:textColor="#0C1E39"
-                android:textSize="34sp" />
-        </LinearLayout>
-
-    </TableRow>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="344dp"
-        android:layout_height="355dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="19dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableRow">
-
-        <EditText
-            android:id="@+id/UsuarioHuesped"
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:ems="10"
-            android:fontFamily="monospace"
-            android:inputType="text"
-            android:text="@string/IngresoUsuario"
-            android:textSize="24sp"
-            tools:ignore="Autofill,LabelFor" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="149dp">
-
-            <LinearLayout
-                android:layout_width="190dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/InstruccionNumeroIdentificacion"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/NumIdentidad_huesped"
-                    android:fontFamily="monospace"
-                    android:text="@string/NumIdentidad_huesped"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/IngresoNumIdentidadHuesped"
-                    android:layout_width="match_parent"
-                    android:layout_height="59dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/NumIdentidad_huesped"
-                    android:ems="10"
-                    android:fontFamily="monospace"
-                    android:inputType="number"
-                    tools:ignore="SpeakableTextPresentCheck,EditableContentDescCheck,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
-
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="onClick"
-                app:srcCompat="@drawable/_89594_56862_o8ql9h_536"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-        </TableRow>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#1A237E"
-                android:contentDescription="@string/ElegirInicio"
-                android:text="@string/ElegirInicio"
-                android:textColor="#EAEAEA" />
-
-            <EditText
-                android:id="@+id/ReservarFecha"
-                android:layout_width="wrap_content"
-                android:layout_height="65dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text"
-                android:text="@string/ElegirInicio" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonHora"
-                android:layout_width="146dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="#1A237E"
-                android:contentDescription="@string/ElegirFinal"
-                android:text="@string/ElegirFinal"
-                android:textColor="#EAEAEA" />
-
-            <EditText
-                android:id="@+id/ReservarHora"
-                android:layout_width="wrap_content"
-                android:layout_height="56dp"
-                android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text"
-                android:text="@string/ElegirFinal" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <TableRow
-        android:layout_width="176dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="67dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-        <Button
-            android:id="@+id/ReservaFinal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#1A237E"
-            android:textColor="#EAEAEA"
-            android:contentDescription="@string/ReservaFinal"
-            android:onClick="GuardarReserva"
-            android:text="@string/ReservaFinal" />
-    </TableRow>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/buttonConfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar reserva"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
