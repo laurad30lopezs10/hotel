@@ -17,7 +17,7 @@ public class SpaActivity extends AppCompatActivity {
     private Button buttonFechaFin;
     private Button buttonConfirmar;
 
-    private int mYear, mMonth, mDay,mMinute,mHour;
+    private int mYear, mMonth, mDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
