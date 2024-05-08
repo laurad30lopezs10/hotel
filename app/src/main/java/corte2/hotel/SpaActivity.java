@@ -10,84 +10,112 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class SpaActivity extends AppCompatActivity {
 
-    private Button buttonFechaInicio;
-    private Button buttonFechaFin;
-    private Button buttonConfirmar;
-    private RadioButton RadioMasajes;
-    private RadioButton RadioPiscina;
-    private RadioButton RadioSauna;
-    private RadioButton RadioTurco;
-    private int mYear, mMonth, mDay;
+      private Button buttonFechaInicio;
+      private Button buttonFechaFin;
+      private Button buttonConfirmar;
+      private RadioButton RadioMasajes;
+      private RadioButton RadioPiscina;
+      private RadioButton RadioSauna;
+      private RadioButton RadioTurco;
+      private int mYear, mMonth, mDay;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spa);
+      @Override
+      protected void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.activity_spa);
 
-        buttonFechaInicio = findViewById(R.id.buttonFechaInicio);
-        buttonFechaFin = findViewById(R.id.buttonFechaFin);
-        buttonConfirmar = findViewById(R.id.buttonConfirmar);
-        RadioMasajes= findViewById(R.id.radioButtonMasajes);
-        RadioPiscina=findViewById(R.id.radioButtonPiscina);
-        RadioSauna=findViewById(R.id.radioButtonSauna);
-        RadioTurco=findViewById(R.id.radioButtonTurco);
-
-
-        buttonFechaInicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(buttonFechaInicio);
-            }
-        });
-
-        buttonFechaFin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDatePickerDialog(buttonFechaFin);
-            }
-        });
-
-        buttonConfirmar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Obtener las fechas seleccionadas
-                String fechaInicio = buttonFechaInicio.getText().toString();
-                String fechaFin = buttonFechaFin.getText().toString();
-
-                // verificar la seleccion de los radiobutton
-                if(RadioMasajes.isChecked()){
-                    Toast seleccionoSalaDeMasajes = Toast.makeText(SpaActivity.this, "Selecciono sala de masajes", Toast.LENGTH_LONG);
-                }
-                if(RadioPiscina.isChecked()){
-                    Toast seleccionoLaPiscina = Toast.makeText(SpaActivity.this, "Selecciono la piscina", Toast.LENGTH_LONG);
-                }
-                if(RadioSauna.isChecked()){
-                    Toast seleccionoElSauna = Toast.makeText(SpaActivity.this, "Selecciono el sauna", Toast.LENGTH_LONG);
-                }
-                if(RadioTurco.isChecked()){
-                    Toast seleccionoElTurco = Toast.makeText(SpaActivity.this, "Selecciono el turco", Toast.LENGTH_LONG);
-                }
+          buttonFechaInicio = findViewById(R.id.buttonFechaInicio);
+          buttonFechaFin = findViewById(R.id.buttonFechaFin);
+          buttonConfirmar = findViewById(R.id.buttonConfirmar);
+          RadioMasajes= findViewById(R.id.radioButtonMasajes);
+          RadioPiscina=findViewById(R.id.radioButtonPiscina);
+          RadioSauna=findViewById(R.id.radioButtonSauna);
+          RadioTurco=findViewById(R.id.radioButtonTurco);
 
 
-                // Verificar si las fechas están vacías
-                if (fechaInicio.isEmpty() || fechaFin.isEmpty()) {
-                    Toast.makeText(SpaActivity.this, "Por favor, seleccione las fechas de inicio y finalización.", Toast.LENGTH_SHORT).show();
-                } else {
-                    // Guardar los datos y abrir el ReciboReservaActivity
-                    Intent intent = new Intent(SpaActivity.this, ReciboReservaActivity.class);
-                    intent.putExtra("fechaInicio", fechaInicio);
-                    intent.putExtra("fechaFin", fechaFin);
-                    startActivity(intent);
-                }
-            }
-        });
+          buttonFechaInicio.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  showDatePickerDialog(buttonFechaInicio);
+              }
+          });
+
+          buttonFechaFin.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  showDatePickerDialog(buttonFechaFin);
+              }
+          });
+
+          buttonConfirmar.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  // Obtener las fechas seleccionadas
+                  String fechaInicio = buttonFechaInicio.getText().toString();
+                  String fechaFin = buttonFechaFin.getText().toString();
+
+                  // verificar la seleccion de los radiobutton
+                  if(RadioMasajes.isChecked()){
+                      Toast seleccionoSalaDeMasajes = Toast.makeText(SpaActivity.this, "Selecciono sala de masajes", Toast.LENGTH_LONG);
+                  }
+                  if(RadioPiscina.isChecked()){
+                      Toast seleccionoLaPiscina = Toast.makeText(SpaActivity.this, "Selecciono la piscina", Toast.LENGTH_LONG);
+                  }
+                  if(RadioSauna.isChecked()){
+                      Toast seleccionoElSauna = Toast.makeText(SpaActivity.this, "Selecciono el sauna", Toast.LENGTH_LONG);
+                  }
+                  if(RadioTurco.isChecked()){
+                      Toast seleccionoElTurco = Toast.makeText(SpaActivity.this, "Selecciono el turco", Toast.LENGTH_LONG);
+                  }
 
 
-    }
+                  // Verificar si las fechas están vacías
+                  if (fechaInicio.isEmpty() || fechaFin.isEmpty()) {
+                      Toast.makeText(SpaActivity.this, "Por favor, seleccione las fechas de inicio y finalización.", Toast.LENGTH_SHORT).show();
+                  } else {
+                    // Convertir las cadenas de texto a objetos Date
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    try {
+                      Date fechaInicioDate = dateFormat.parse(fechaInicio);
+                      Date fechaFinDate = dateFormat.parse(fechaFin);
+
+                      // Comparar las fechas
+                      if (fechaInicioDate.before(fechaFinDate)) {
+
+                        /// Guardar los datos y abrir el ReciboReservaActivity
+                        Intent intent = new Intent(SpaActivity.this, ReciboReservaActivity.class);
+                        intent.putExtra("fechaInicio", fechaInicio);
+                        intent.putExtra("fechaFin", fechaFin);
+                        startActivity(intent);
+
+                      } else {
+
+                        // La fecha de inicio es menor a la fecha de fin
+                        Toast.makeText(SpaActivity.this, "La fecha de inicio es menor a la fecha de fin.", Toast.LENGTH_SHORT).show();
+
+                      }
+                    } catch (ParseException e) {
+                      e.printStackTrace();
+                      Toast.makeText(SpaActivity.this, "Error al comparar las fechas.", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+                  }
+              }
+          });
+
+
+      }
 
     private void showDatePickerDialog(final Button button) {
         final Calendar c = Calendar.getInstance();
