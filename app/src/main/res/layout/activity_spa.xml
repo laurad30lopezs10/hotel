@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/spaLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,23 +11,23 @@
 
     <TableRow
         android:id="@+id/tableRow"
-        tools:ignore="VisualLintBounds"
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_height="128dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds">
 
         <ImageView
             android:id="@+id/Imagen_logo1"
-            tools:ignore="ImageContrastCheck"
             android:layout_width="103dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/Logo"
-            app:srcCompat="@drawable/_433039_2369398" />
+            app:srcCompat="@drawable/_433039_2369398"
+            tools:ignore="ImageContrastCheck" />
 
         <LinearLayout
             android:layout_width="265dp"
@@ -35,14 +36,14 @@
 
             <TextView
                 android:id="@+id/NombreHotel1"
-                tools:ignore="TextSizeCheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/Nombre"
                 android:fontFamily="@font/black_and_white_picture"
                 android:text="@string/Nombre"
                 android:textColor="#0C3168"
-                android:textSize="40sp" />
+                android:textSize="40sp"
+                tools:ignore="TextSizeCheck" />
 
             <TextView
                 android:id="@+id/TituloReserva"
@@ -59,7 +60,7 @@
 
     <LinearLayout
         android:layout_width="369dp"
-        android:layout_height="447dp"
+        android:layout_height="249dp"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -114,6 +115,60 @@
                 android:text="@string/ElegirFinal"
                 android:textColor="#121111" />
         </LinearLayout>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ZonasHuemdas"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:contentDescription="@string/textozonashuemdas"
+                android:fontFamily="monospace"
+                android:text="@string/textozonashuemdas"
+                android:textColor="#0C0C0C"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonMasajes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/SpaText"
+                android:fontFamily="monospace"
+                android:text="@string/SpaText"
+                android:checked="true"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonPiscina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/PiscinaText"
+                android:fontFamily="monospace"
+                android:text="@string/PiscinaText"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonSauna"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/SaunaText"
+                android:fontFamily="monospace"
+                android:text="@string/SaunaText"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radioButtonTurco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/TurcoText"
+                android:fontFamily="monospace"
+                android:minHeight="48dp"
+                android:text="@string/TurcoText"
+                android:textSize="20sp"
+                tools:ignore="TouchTargetSizeCheck" />
+        </RadioGroup>
 
     </LinearLayout>
 

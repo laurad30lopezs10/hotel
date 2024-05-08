@@ -25,4 +25,9 @@
     <string name="fechafinal" >Final date</string>
     <string name="graciastext" >Thank for your visit our humid areas</string>
     <string name="Close" >Cerrar</string>
+    <string name="textozonashuemdas" >Choose the wet area where you want to reserve</string>
+    <string name="SpaText" >massage room</string>
+    <string name="PiscinaText" >Swimming Pool</string>
+    <string name="SaunaText" >Sauna</string>
+    <string name="TurcoText" >Turco</string>
 </resources>

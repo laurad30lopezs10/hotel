@@ -26,4 +26,9 @@
     <string name="fechafinal" >Fecha final</string>
     <string name="graciastext" >Gracias por visitar nuestras zonas humedas</string>
     <string name="Close" >Close</string>
+    <string name="textozonashuemdas" >Elegir la zona humeda donde desea reservar</string>
+    <string name="SpaText" >Sala de masajes</string>
+    <string name="PiscinaText" >Piscina</string>
+    <string name="SaunaText" >Sauna</string>
+    <string name="TurcoText" >Turco</string>
 </resources>

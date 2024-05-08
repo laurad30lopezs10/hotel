@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Calendar;
@@ -17,6 +18,10 @@ public class SpaActivity extends AppCompatActivity {
     private Button buttonFechaFin;
     private Button buttonConfirmar;
 
+    private RadioButton RadioMasajes;
+    private RadioButton RadioPiscina;
+    private RadioButton RadioSauna;
+    private RadioButton RadioTurco;
     private int mYear, mMonth, mDay;
 
     @Override
@@ -27,6 +32,11 @@ public class SpaActivity extends AppCompatActivity {
         buttonFechaInicio = findViewById(R.id.buttonFechaInicio);
         buttonFechaFin = findViewById(R.id.buttonFechaFin);
         buttonConfirmar = findViewById(R.id.buttonConfirmar);
+        RadioMasajes= findViewById(R.id.radioButtonMasajes);
+        RadioPiscina=findViewById(R.id.radioButtonPiscina);
+        RadioSauna=findViewById(R.id.radioButtonSauna);
+        RadioTurco=findViewById(R.id.radioButtonTurco);
+
 
         buttonFechaInicio.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +59,21 @@ public class SpaActivity extends AppCompatActivity {
                 String fechaInicio = buttonFechaInicio.getText().toString();
                 String fechaFin = buttonFechaFin.getText().toString();
 
+                // verificar la seleccion de los radiobutton
+                if(RadioMasajes.isChecked()){
+                    Toast seleccionoSalaDeMasajes = Toast.makeText(SpaActivity.this, "Selecciono sala de masajes", Toast.LENGTH_LONG);
+                }
+                if(RadioPiscina.isChecked()){
+                    Toast seleccionoLaPiscina = Toast.makeText(SpaActivity.this, "Selecciono la piscina", Toast.LENGTH_LONG);
+                }
+                if(RadioSauna.isChecked()){
+                    Toast seleccionoElSauna = Toast.makeText(SpaActivity.this, "Selecciono el sauna", Toast.LENGTH_LONG);
+                }
+                if(RadioTurco.isChecked()){
+                    Toast seleccionoElTurco = Toast.makeText(SpaActivity.this, "Selecciono el turco", Toast.LENGTH_LONG);
+                }
+
+
                 // Verificar si las fechas están vacías
                 if (fechaInicio.isEmpty() || fechaFin.isEmpty()) {
                     Toast.makeText(SpaActivity.this, "Por favor, seleccione las fechas de inicio y finalización.", Toast.LENGTH_SHORT).show();
@@ -61,6 +86,8 @@ public class SpaActivity extends AppCompatActivity {
                 }
             }
         });
+
+
     }
 
     private void showDatePickerDialog(final Button button) {

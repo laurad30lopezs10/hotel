@@ -23,4 +23,9 @@
     <string name="fechafinal" >Final date</string>
     <string name="graciastext" />
     <string name="Close" />
+    <string name="textozonashuemdas" />
+    <string name="SpaText" >massage room</string>
+    <string name="PiscinaText" />
+    <string name="SaunaText" >Sauna</string>
+    <string name="TurcoText" />
 </resources>
