@@ -30,7 +30,7 @@
 
         <TextView
             android:id="@+id/NombreHotel1"
-            android:layout_width="209dp"
+            android:layout_width="280dp"
             android:layout_height="match_parent"
             android:contentDescription="@string/Nombre"
             android:fontFamily="@font/black_and_white_picture"

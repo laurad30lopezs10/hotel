@@ -17,8 +17,13 @@
     <string name="Usuario_huesped" >Crear un usuario</string>
     <string name="Passwor_huesped" >Crear una clave</string>
     <string name="Titulo_registro" >Ingrese sus datos para realizar el registros</string>
-    <string name="Titulo_reserva" >Realice su reserva a contunuacion</string>
-    <string name="ElegirInicio" >"Elegir la fecha "</string>
-    <string name="ElegirFinal" >Elegir la Hora</string>
+    <string name="Titulo_reserva" >Realice su reserva a continuacion</string>
+    <string name="ElegirInicio" >"Elegir la fecha inicial "</string>
+    <string name="ElegirFinal" >Elegir la fecha final</string>
     <string name="ReservaFinal" >Finalizar reserva</string>
+    <string name="TituloRecibo" >Aqui podra encontrar su recibo</string>
+    <string name="fechainicio" >Fecha inicial</string>
+    <string name="fechafinal" >Fecha final</string>
+    <string name="graciastext" >Gracias por visitar nuestras zonas humedas</string>
+    <string name="Close" >Close</string>
 </resources>

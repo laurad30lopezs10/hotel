@@ -1,43 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/spaLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/_8706120_rm222batch5_mind_01"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha de inicio:"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
+    <TableRow
+        android:id="@+id/tableRow"
+        tools:ignore="VisualLintBounds"
+        android:layout_width="match_parent"
+        android:layout_height="118dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/buttonFechaInicio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar fecha de inicio"
-        android:layout_marginBottom="16dp"/>
+        <ImageView
+            android:id="@+id/Imagen_logo1"
+            tools:ignore="ImageContrastCheck"
+            android:layout_width="103dp"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/Logo"
+            app:srcCompat="@drawable/_433039_2369398" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha de finalización:"
-        android:textSize="18sp"
-        android:layout_marginBottom="8dp"/>
+        <LinearLayout
+            android:layout_width="265dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonFechaFin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Seleccionar fecha de finalización"
-        android:layout_marginBottom="16dp"/>
+            <TextView
+                android:id="@+id/NombreHotel1"
+                tools:ignore="TextSizeCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/Nombre"
+                android:fontFamily="@font/black_and_white_picture"
+                android:text="@string/Nombre"
+                android:textColor="#0C3168"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/TituloReserva"
+                android:layout_width="match_parent"
+                android:layout_height="69dp"
+                android:contentDescription="@string/Titulo_reserva"
+                android:fontFamily="@font/black_and_white_picture"
+                android:text="@string/Titulo_reserva"
+                android:textColor="#0C1E39"
+                android:textSize="34sp" />
+        </LinearLayout>
+
+    </TableRow>
+
+    <LinearLayout
+        android:layout_width="369dp"
+        android:layout_height="447dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="181dp"
+            android:layout_height="233dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/TextFechaInicio"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/ElegirInicio"
+                android:fontFamily="monospace"
+                android:text="@string/ElegirInicio"
+                android:textColor="#050505"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/buttonFechaInicio"
+                android:layout_width="match_parent"
+                android:layout_height="59dp"
+                android:layout_marginBottom="16dp"
+                android:background="#5D94EA"
+                android:backgroundTint="#5B8EDD"
+                android:contentDescription="@string/ElegirFinal"
+                android:fontFamily="monospace"
+                android:text="@string/ElegirInicio"
+                android:textColor="#100F0F" />
+
+            <TextView
+                android:id="@+id/textTime"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="8dp"
+                android:contentDescription="@string/ElegirFinal"
+                android:fontFamily="monospace"
+                android:text="@string/ElegirFinal"
+                android:textColor="#0B0A0A"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/buttonFechaFin"
+                android:layout_width="match_parent"
+                android:layout_height="61dp"
+                android:layout_marginBottom="16dp"
+                android:background="#5B90E4"
+                android:backgroundTint="#6B99E3"
+                android:contentDescription="@string/ElegirFinal"
+                android:fontFamily="monospace"
+                android:minHeight="48dp"
+                android:text="@string/ElegirFinal"
+                android:textColor="#121111" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/buttonConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirmar reserva"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:background="#0C1E39"
+        android:backgroundTint="#0C1E39"
+        android:contentDescription="@string/ReservaFinal"
+        android:text="@string/ReservaFinal" />
+
 </LinearLayout>

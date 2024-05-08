@@ -30,7 +30,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="108dp"
             android:orientation="vertical">
 
             <TextView
@@ -44,15 +44,15 @@
                 android:textSize="40sp"
                 tools:ignore="TextSizeCheck" />
 
-          <TextView
-            android:id="@+id/TituloReserva"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:contentDescription="@string/Titulo_registro"
-            android:fontFamily="@font/black_and_white_picture"
-            android:text="@string/Titulo_registro"
-            android:textColor="#0C1E39"
-            android:textSize="34sp" />
+            <TextView
+                android:id="@+id/TituloReserva"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:contentDescription="@string/Titulo_registro"
+                android:fontFamily="@font/black_and_white_picture"
+                android:text="@string/Titulo_registro"
+                android:textColor="#0C1E39"
+                android:textSize="34sp" />
         </LinearLayout>
 
     </TableRow>
@@ -99,14 +99,15 @@
             android:layout_height="45dp"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/InstruccionNumeroIdentificacion"
-                android:layout_width="56dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="@string/NumIdentidad_huesped"
-                android:text="@string/NumIdentidad_huesped"
-                android:textSize="18sp" />
+          <TextView
+              android:id="@+id/InstruccionNumeroIdentificacion"
+              android:layout_width="56dp"
+              android:layout_height="match_parent"
+              android:layout_weight="1"
+              android:contentDescription="@string/NumIdentidad_huesped"
+              android:fontFamily="@font/black_and_white_picture"
+              android:text="@string/NumIdentidad_huesped"
+              android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/InstruccionIngresoTelefono"
@@ -204,14 +205,14 @@
 
         <Button
             android:id="@+id/buttonGuardarRegistro"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#1A237E"
-            android:textColor="#EAEAEA"
             android:contentDescription="@string/GuardarRegistro"
             android:fontFamily="monospace"
             android:onClick="guardarRegistro"
-            android:text="@string/GuardarRegistro" />
+            android:text="@string/GuardarRegistro"
+            android:textColor="#EAEAEA" />
 
     </TableRow>
 

@@ -1,6 +1,7 @@
 package corte2.hotel;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ public class SpaActivity extends AppCompatActivity {
     private Button buttonFechaFin;
     private Button buttonConfirmar;
 
-    private int mYear, mMonth, mDay;
+    private int mYear, mMonth, mDay,mMinute,mHour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,9 +74,15 @@ public class SpaActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         String date = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+
                         button.setText(date);
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
+
+
     }
+
+
+
 }

@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         dbHelper = new HotelDBHelper(this);
-
         NombreH = findViewById(R.id.IngresoNombreHuesped);
         ApellidoH = findViewById(R.id.IngresoApellidoHuesped);
         IdentificacionH = findViewById(R.id.IngresoNumIdentidadHuesped);
@@ -39,12 +38,15 @@ public class RegisterActivity extends AppCompatActivity {
         PasswordH = findViewById(R.id.CreacionPasswordHuesped);
         GuardarH = findViewById(R.id.buttonGuardarRegistro);
 
+
         GuardarH.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
+
                 guardarRegistro();
             }
-
         });
     }
 
@@ -75,6 +77,8 @@ public class RegisterActivity extends AppCompatActivity {
 
       //String[] columns = {usuario, password, nombre, email};
       //String selection = "id = ?";
+
+
 
     }
 
