@@ -17,7 +17,6 @@ public class SpaActivity extends AppCompatActivity {
     private Button buttonFechaInicio;
     private Button buttonFechaFin;
     private Button buttonConfirmar;
-
     private RadioButton RadioMasajes;
     private RadioButton RadioPiscina;
     private RadioButton RadioSauna;
