@@ -63,10 +63,12 @@ public class ReciboReservaActivity extends AppCompatActivity {
 
             // Calcular la duración de la reserva en días
             long durationInMillis = endDateMillis - startDateMillis;
-            int durationInDays = (int) (durationInMillis / (1000 * 60 * 60 * 24)); // convertir milisegundos a días
+            // convertir milisegundos a días
+            int durationInDays = (int) (durationInMillis / (1000 * 60 * 60 * 24));
 
             // Calcular el costo total de la reserva
             int totalPrice = durationInDays * price;
+
 
             // Mostrar los datos en los TextViews
             fechaInicioTextView.setText(startDate);
