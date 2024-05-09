@@ -1,10 +1,7 @@
 package corte2.hotel;
 
 import android.app.DatePickerDialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,9 +18,6 @@ import java.util.Locale;
 
 import corte2.hotel.data.HotelDBHelper;
 import corte2.hotel.data.ReservationSpa;
-import corte2.hotel.data.ReservationSpaContract;
-import corte2.hotel.data.Spa;
-import corte2.hotel.data.SpaContract;
 
 public class SpaActivity extends AppCompatActivity {
 
@@ -78,18 +72,33 @@ public class SpaActivity extends AppCompatActivity {
 
                 // Verificar la selección de los radiobutton
                 String tipoServicio = "";
+
+                int precio = 0;
+
                 if (RadioMasajes.isChecked()) {
-                    tipoServicio = "massage room";
+
+                    tipoServicio = RadioMasajes.getText().toString();
+
                     precio = 200000;
+
                 } else if (RadioPiscina.isChecked()) {
-                    tipoServicio = "Swimming Pool";
+
+                    tipoServicio = RadioPiscina.getText().toString();
+
                     precio = 100000;
+
                 } else if (RadioSauna.isChecked()) {
-                    tipoServicio = "Sauna";
+
+                    tipoServicio = RadioSauna.getText().toString();
+
                     precio = 300000;
+
                 } else if (RadioTurco.isChecked()) {
-                    tipoServicio = "Turco";
+
+                    tipoServicio = RadioTurco.getText().toString();
+
                     precio = 400000;
+
                 }
 
                 // Verificar si las fechas están vacías
@@ -111,7 +120,7 @@ public class SpaActivity extends AppCompatActivity {
                             String Usuario = recibir.getStringExtra("usuario");
 
                             // Guardar los datos en la base de datos
-                            guardarReserva(fechaInicioDate, fechaFinDate, tipoServicio, Usuario, precio);
+                            guardarReserva(fechaInicioDate, precio, tipoServicio, fechaFinDate);
 
                             Intent intent = new Intent(SpaActivity.this, ReciboReservaActivity.class);
                             intent.putExtra("fechaInicio", fechaInicio);
@@ -153,39 +162,9 @@ public class SpaActivity extends AppCompatActivity {
 
     }
 
-    private void guardarReserva(Date fechaInicio, Date fechaFin, String tipoServicio, String user, int cost) {
-        // Obtener instancia de la base de datos
-      SQLiteDatabase db = dbHelper.getWritableDatabase();
-      Cursor cursor = db.rawQuery("SELECT MAX(num_reserve) FROM ReservationSpa", null);
-      long nextId = 0;
-      if (cursor.moveToFirst()) {
-        nextId = cursor.getLong(0) + 1;
-      }
-      cursor.close();
-
-
-      ReservationSpa reservado = new ReservationSpa(nextId, fechaInicio,fechaFin, user, cost);
-      dbHelper.saveReservationSpa(reservado);
-
-        // Crear un ContentValues para insertar los datos
-        /*ContentValues values = new ContentValues();
-        values.put(ReservationSpaContract.ReservationSpaEntry.start_date_reservation, fechaInicio);
-        values.put(ReservationSpaContract.ReservationSpaEntry.end_date_reservation, fechaFin);
-        values.put(SpaContract.SpaEntry.col_name_zone, tipoServicio);
-
-        // Insertar los datos en la tabla de reservas
-        long newRowId = db.insert("ReservationSpaEntry", null, values);
-
-        if (newRowId != -1) {
-            // La inserción fue exitosa
-            Toast.makeText(SpaActivity.this, "Reserva guardada correctamente", Toast.LENGTH_SHORT).show();
-        } else {
-            // Ocurrió un error al insertar los datos
-            Toast.makeText(SpaActivity.this, "Error al guardar la reserva", Toast.LENGTH_SHORT).show();
-        }*/
-
-        // Cerrar la conexión a la base de datos
-        db.close();
+    private void guardarReserva(Date fechaInicio, int cost, String tipoServicio,Date fechaFin ) {
+        ReservationSpa reservationSpa = new ReservationSpa(fechaInicio, cost, tipoServicio, fechaFin);
+        dbHelper.saveReservationSpa(reservationSpa);
     }
 
 

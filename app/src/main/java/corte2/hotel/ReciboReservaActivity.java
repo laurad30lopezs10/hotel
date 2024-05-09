@@ -1,60 +1,82 @@
 package corte2.hotel;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import corte2.hotel.data.HotelDBHelper;
-import corte2.hotel.data.ReservationSpa;
-import corte2.hotel.data.Spa;
+import corte2.hotel.data.ReservationSpaContract;
+
 
 public class ReciboReservaActivity extends AppCompatActivity {
 
     private TextView fechaInicioTextView;
+
     private TextView fechaFinTextView;
+
     private TextView costoTextView;
+
     private Button cerrarButton;
+
     private HotelDBHelper db;
 
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_recibo_reserva);
 
+
         db = new HotelDBHelper(this);
+
         fechaInicioTextView = findViewById(R.id.fechaInicioTextView);
+
         fechaFinTextView = findViewById(R.id.fechaFinTextView);
+
         costoTextView = findViewById(R.id.costoTextView);
+
         cerrarButton = findViewById(R.id.cerrarButton);
 
 
+        // Extract data from ReservationSpa table
 
+        Cursor cursor = db.getAllReservations();
 
-        Intent intent = getIntent();
-        if (intent != null) {
-            String user =  intent.getStringExtra("usuario");
-            Cursor cursor = db.getReservationsByUser(user);
-            if(cursor.moveToFirst()){
-              cursor.moveToLast();
+        if (cursor.moveToFirst()) {
+            long startDateMillis = cursor.getLong(cursor.getColumnIndexOrThrow(ReservationSpaContract.ReservationSpaEntry.COLUMN_START_DATE));
+            long endDateMillis = cursor.getLong(cursor.getColumnIndexOrThrow(ReservationSpaContract.ReservationSpaEntry.COLUMN_END_DATE));
+            int price = cursor.getInt(cursor.getColumnIndexOrThrow(ReservationSpaContract.ReservationSpaEntry.COLUMN_PRICE));
 
-              @SuppressLint("Range") String fechaInicio = cursor.getString(cursor.getColumnIndex("start_reserve"));
-              @SuppressLint("Range") String fechaFin =  cursor.getString(cursor.getColumnIndex("end_reserve"));
-              @SuppressLint("Range") int costoTotal = cursor.getInt(cursor.getColumnIndex("spa"));
+            // Formatear las fechas
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            String startDate = dateFormat.format(new Date(startDateMillis));
+            String endDate = dateFormat.format(new Date(endDateMillis));
 
-              fechaInicioTextView.setText("Fecha de inicio: " + fechaInicio);
-              fechaFinTextView.setText("Fecha de finalización: " + fechaFin);
-              costoTextView.setText("Costo total: $" + costoTotal);
+            // Calcular la duración de la reserva en días
+            long durationInMillis = endDateMillis - startDateMillis;
+            int durationInDays = (int) (durationInMillis / (1000 * 60 * 60 * 24)); // convertir milisegundos a días
 
+            // Calcular el costo total de la reserva
+            int totalPrice = durationInDays * price;
 
-            }
-
-
+            // Mostrar los datos en los TextViews
+            fechaInicioTextView.setText(startDate);
+            fechaFinTextView.setText(endDate);
+            costoTextView.setText(String.valueOf(totalPrice));
         }
 
-        cerrarButton.setOnClickListener(view -> finish());
+        cursor.close();
+
+        db.close();
+
     }
 }

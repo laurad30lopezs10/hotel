@@ -1,10 +1,11 @@
 package corte2.hotel.data;
 
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Build;
 
 import androidx.annotation.Nullable;
@@ -12,7 +13,6 @@ import androidx.annotation.Nullable;
 import corte2.hotel.data.HuespedContract.HuespedEntry;
 import corte2.hotel.data.TelefonoContract.TelefonoEntry;
 import corte2.hotel.data.ReservationSpaContract.ReservationSpaEntry;
-import corte2.hotel.data.SpaContract.SpaEntry;
 
 public class
 HotelDBHelper extends SQLiteOpenHelper {
@@ -40,25 +40,13 @@ HotelDBHelper extends SQLiteOpenHelper {
                 "UNIQUE("+TelefonoEntry.col_telefono+"),"+
                 "FOREIGN KEY ("+HuespedEntry.col_usuario+") REFERENCES "+ HuespedEntry.TABLE_NAME +"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE)");
 
-        sqLiteDatabase.execSQL("CREATE TABLE "+ SpaEntry.TABLE_NAME + " (" +
-                SpaEntry.col_cod_zone+" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                SpaEntry.col_name_zone+" TEXT NOT NULL, " +
-                SpaEntry.col_description+" TEXT NOT NULL, " +
-                SpaEntry.col_capacity+" INTEGER NOT NULL, " +
-                SpaEntry.col_type+" TEXT NOT NULL" + ")");
-
-
-        sqLiteDatabase.execSQL("CREATE TABLE " + ReservationSpaEntry.TABLE_NAME + " ( " +
-                ReservationSpaEntry.col_num_reservation+" INTEGER NOT NULL, " +
-                HuespedEntry.col_usuario+" TEXT NOT NULL, " +
-                ReservationSpaEntry.start_date_reservation+" DATE NOT NULL, " +
-                ReservationSpaEntry.end_date_reservation+" DATE NOT NULL, " +
-                ReservationSpaEntry.col_zone_spa+" INTEGER NOT NULL, "+
-                SpaEntry.col_name_zone+" TEXT NOT NULL, "+
-                "PRIMARY KEY ("+ReservationSpaEntry.col_num_reservation+","+HuespedEntry.col_usuario+","+
-                ReservationSpaEntry.start_date_reservation+","+ReservationSpaEntry.end_date_reservation+"),"+
-                " FOREIGN KEY ("+HuespedEntry.col_usuario+") REFERENCES "+HuespedEntry.TABLE_NAME+"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE," +
-                " FOREIGN KEY ("+SpaEntry.col_name_zone+") REFERENCES "+SpaEntry.TABLE_NAME+"("+SpaEntry.col_name_zone+") ON DELETE CASCADE"+")");
+        sqLiteDatabase.execSQL("CREATE TABLE " + ReservationSpaEntry.TABLE_NAME + " (" +
+                ReservationSpaEntry.COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                ReservationSpaEntry.COLUMN_USER_ID + " INTEGER, " +
+                ReservationSpaEntry.COLUMN_START_DATE + " DATE, " +
+                ReservationSpaEntry.COLUMN_END_DATE + " DATE, " +
+                ReservationSpaEntry.COLUMN_SERVICE_TYPE + " TEXT, " +
+                ReservationSpaEntry.COLUMN_PRICE + " INTEGER)");
     }
 
     @Override
@@ -90,50 +78,23 @@ HotelDBHelper extends SQLiteOpenHelper {
                 telefono.toContentValues());
     }
 
-    public long saveReservationSpa(ReservationSpa reservationSpa){
-        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        return sqLiteDatabase.insert(
-                ReservationSpaEntry.TABLE_NAME,
-                null,
-                reservationSpa.toContentValues()
-        );
-    }
+    public void saveReservationSpa(ReservationSpa reservation) {
 
-    public Cursor getTodosHuesped() {
-        return getReadableDatabase()
-                .query(
-                        HuespedEntry.TABLE_NAME,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null);
-    }
+        SQLiteDatabase db = getWritableDatabase();
 
-    public Cursor getUsuarioTelefono(){
-        SQLiteDatabase db = getReadableDatabase();
-        SQLiteQueryBuilder builder = new SQLiteQueryBuilder();
-        String tables = HuespedEntry.TABLE_NAME+" INNER JOIN "+TelefonoEntry.TABLE_NAME+
-                " on "+HuespedEntry.TABLE_NAME+"."+HuespedEntry.col_usuario+" = "+TelefonoEntry.TABLE_NAME+"."+HuespedEntry.col_usuario;
-        builder.setTables( tables);
-        //String columnas[] = new String["user","name","tel"];
-        //return builder.query( db, columnas,null,null,null,null,null );
-        return builder.query( db, null,null,null,null,null,null );
-    }
+        ContentValues values = new ContentValues();
 
-    public Cursor getHuespedByUser(String user) {
-        Cursor c = getReadableDatabase().query(
-                HuespedEntry.TABLE_NAME,
-                null,
-                HuespedEntry.col_usuario + " LIKE ?",
-                new String[]{user},
-                null,
-                null,
-                null);
-        return c;
-    }
+        values.put(ReservationSpaEntry.COLUMN_START_DATE, reservation.getStartDate().getTime());
 
+        values.put(ReservationSpaEntry.COLUMN_PRICE, reservation.getPrice());
+
+        values.put(ReservationSpaEntry.COLUMN_SERVICE_TYPE, reservation.getServiceType());
+
+        values.put(ReservationSpaEntry.COLUMN_END_DATE, reservation.getEndDate().getTime());
+
+        db.insert(ReservationSpaEntry.TABLE_NAME, null, values);
+
+    }
     public Cursor getHuespedByUser(String user, String password) {
         Cursor c = getReadableDatabase().query(
                 HuespedEntry.TABLE_NAME,
@@ -146,39 +107,40 @@ HotelDBHelper extends SQLiteOpenHelper {
         return c;
     }
 
-  public Cursor getReservationsByUser(String usuario) {
-    Cursor c = getReadableDatabase().query(
-      ReservationSpaEntry.TABLE_NAME,
-      null,
-      ReservationSpaEntry.col_usuario + " LIKE?",
-      new String[]{usuario},
-      null,
-      null,
-      null);
-    return c;
-  }
 
+    public Cursor getAllReservations() {
 
-  public int deleteHuesped(String user) {
-        return getWritableDatabase().delete(
-                HuespedEntry.TABLE_NAME,
-                HuespedEntry.col_usuario + " LIKE ?",
-                new String[]{user});
-    }
+        SQLiteDatabase db = getReadableDatabase();
 
-    public int updateHuesped(Huesped huesped, String user) {
-        return getWritableDatabase().update(
-                HuespedEntry.TABLE_NAME,
-                huesped.toContentValues(),
-                HuespedEntry.col_usuario + " LIKE ?",
-                new String[]{user}
-        );
+        return db.query(
+
+                ReservationSpaEntry.TABLE_NAME,
+
+                null,
+
+                null,
+
+                null,
+
+                null,
+
+                null,
+
+                null);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
-    }
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + HuespedEntry.TABLE_NAME);
 
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TelefonoEntry.TABLE_NAME);
+
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + ReservationSpaEntry.TABLE_NAME);
+
+        onCreate(sqLiteDatabase);
+
+    }
 
 }
