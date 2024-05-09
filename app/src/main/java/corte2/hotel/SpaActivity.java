@@ -1,8 +1,9 @@
 package corte2.hotel;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import corte2.hotel.data.HotelDBHelper;
+import corte2.hotel.data.ReservationSpaContract;
+import corte2.hotel.data.Spa;
+import corte2.hotel.data.SpaContract;
+
 public class SpaActivity extends AppCompatActivity {
 
       private Button buttonFechaInicio;
@@ -28,11 +34,15 @@ public class SpaActivity extends AppCompatActivity {
       private RadioButton RadioTurco;
       private int mYear, mMonth, mDay;
 
-      @Override
+    private HotelDBHelper dbHelper;
+
+
+    @Override
       protected void onCreate(Bundle savedInstanceState) {
           super.onCreate(savedInstanceState);
           setContentView(R.layout.activity_spa);
 
+          dbHelper = new HotelDBHelper(this);
           buttonFechaInicio = findViewById(R.id.buttonFechaInicio);
           buttonFechaFin = findViewById(R.id.buttonFechaFin);
           buttonConfirmar = findViewById(R.id.buttonConfirmar);
@@ -56,66 +66,60 @@ public class SpaActivity extends AppCompatActivity {
               }
           });
 
-          buttonConfirmar.setOnClickListener(new View.OnClickListener() {
-              @Override
-              public void onClick(View v) {
-                  // Obtener las fechas seleccionadas
-                  String fechaInicio = buttonFechaInicio.getText().toString();
-                  String fechaFin = buttonFechaFin.getText().toString();
+        buttonConfirmar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener las fechas seleccionadas
+                String fechaInicio = buttonFechaInicio.getText().toString();
+                String fechaFin = buttonFechaFin.getText().toString();
 
-                  // verificar la seleccion de los radiobutton
-                  if(RadioMasajes.isChecked()){
-                      Toast seleccionoSalaDeMasajes = Toast.makeText(SpaActivity.this, "Selecciono sala de masajes", Toast.LENGTH_LONG);
-                  }
-                  if(RadioPiscina.isChecked()){
-                      Toast seleccionoLaPiscina = Toast.makeText(SpaActivity.this, "Selecciono la piscina", Toast.LENGTH_LONG);
-                  }
-                  if(RadioSauna.isChecked()){
-                      Toast seleccionoElSauna = Toast.makeText(SpaActivity.this, "Selecciono el sauna", Toast.LENGTH_LONG);
-                  }
-                  if(RadioTurco.isChecked()){
-                      Toast seleccionoElTurco = Toast.makeText(SpaActivity.this, "Selecciono el turco", Toast.LENGTH_LONG);
-                  }
+                // Verificar la selección de los radiobutton
+                String tipoServicio = "";
+                if (RadioMasajes.isChecked()) {
+                    tipoServicio = "massage room";
+                } else if (RadioPiscina.isChecked()) {
+                    tipoServicio = "Swimming Pool";
+                } else if (RadioSauna.isChecked()) {
+                    tipoServicio = "Sauna";
+                } else if (RadioTurco.isChecked()) {
+                    tipoServicio = "Turco";
+                }
 
-
-                  // Verificar si las fechas están vacías
-                  if (fechaInicio.isEmpty() || fechaFin.isEmpty()) {
-                      Toast.makeText(SpaActivity.this, "Por favor, seleccione las fechas de inicio y finalización.", Toast.LENGTH_SHORT).show();
-                  } else {
+                // Verificar si las fechas están vacías
+                if (fechaInicio.isEmpty() || fechaFin.isEmpty() || tipoServicio.isEmpty()) {
+                    Toast.makeText(SpaActivity.this, "Por favor, seleccione las fechas y el servicio.", Toast.LENGTH_SHORT).show();
+                } else {
                     // Convertir las cadenas de texto a objetos Date
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
                     try {
-                      Date fechaInicioDate = dateFormat.parse(fechaInicio);
-                      Date fechaFinDate = dateFormat.parse(fechaFin);
+                        Date fechaInicioDate = dateFormat.parse(fechaInicio);
+                        Date fechaFinDate = dateFormat.parse(fechaFin);
 
-                      // Comparar las fechas
-                      if (fechaInicioDate.before(fechaFinDate)) {
+                        // Comparar las fechas
+                        if (fechaInicioDate.before(fechaFinDate)) {
+                            // Guardar los datos en la base de datos
+                            guardarReserva(fechaInicio, fechaFin, tipoServicio);
 
-                        /// Guardar los datos y abrir el ReciboReservaActivity
-                        Intent intent = new Intent(SpaActivity.this, ReciboReservaActivity.class);
-                        intent.putExtra("fechaInicio", fechaInicio);
-                        intent.putExtra("fechaFin", fechaFin);
-                        startActivity(intent);
-
-                      } else {
-
-                        // La fecha de inicio es menor a la fecha de fin
-                        Toast.makeText(SpaActivity.this, "La fecha de inicio es menor a la fecha de fin.", Toast.LENGTH_SHORT).show();
-
-                      }
+                            /// Abrir el ReciboReservaActivity
+                            Intent intent = new Intent(SpaActivity.this, ReciboReservaActivity.class);
+                            intent.putExtra("fechaInicio", fechaInicio);
+                            intent.putExtra("fechaFin", fechaFin);
+                            startActivity(intent);
+                        } else {
+                            // La fecha de inicio es mayor o igual a la fecha de fin
+                            Toast.makeText(SpaActivity.this, "La fecha de inicio debe ser menor que la fecha de fin.", Toast.LENGTH_SHORT).show();
+                        }
                     } catch (ParseException e) {
-                      e.printStackTrace();
-                      Toast.makeText(SpaActivity.this, "Error al comparar las fechas.", Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                        Toast.makeText(SpaActivity.this, "Error al comparar las fechas.", Toast.LENGTH_SHORT).show();
                     }
+                }
+            }
+        });
 
 
 
-                  }
-              }
-          });
-
-
-      }
+    }
 
     private void showDatePickerDialog(final Button button) {
         final Calendar c = Calendar.getInstance();
@@ -134,9 +138,32 @@ public class SpaActivity extends AppCompatActivity {
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
 
-
     }
 
+    private void guardarReserva(String fechaInicio, String fechaFin, String tipoServicio) {
+        // Obtener instancia de la base de datos
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // Crear un ContentValues para insertar los datos
+        ContentValues values = new ContentValues();
+        values.put(ReservationSpaContract.ReservationSpaEntry.start_date_reservation, fechaInicio);
+        values.put(ReservationSpaContract.ReservationSpaEntry.end_date_reservation, fechaFin);
+        values.put(SpaContract.SpaEntry.col_name_zone, tipoServicio);
+
+        // Insertar los datos en la tabla de reservas
+        long newRowId = db.insert("ReservationSpaEntry", null, values);
+
+        if (newRowId != -1) {
+            // La inserción fue exitosa
+            Toast.makeText(SpaActivity.this, "Reserva guardada correctamente", Toast.LENGTH_SHORT).show();
+        } else {
+            // Ocurrió un error al insertar los datos
+            Toast.makeText(SpaActivity.this, "Error al guardar la reserva", Toast.LENGTH_SHORT).show();
+        }
+
+        // Cerrar la conexión a la base de datos
+        db.close();
+    }
 
 
 }

@@ -6,6 +6,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
+import corte2.hotel.data.HotelDBHelper;
+import corte2.hotel.data.ReservationSpa;
+import corte2.hotel.data.Spa;
+
 public class ReciboReservaActivity extends AppCompatActivity {
 
     private TextView fechaInicioTextView;
@@ -32,6 +36,7 @@ public class ReciboReservaActivity extends AppCompatActivity {
             fechaInicioTextView.setText("Fecha de inicio: " + fechaInicio);
             fechaFinTextView.setText("Fecha de finalización: " + fechaFin);
             costoTextView.setText("Costo total: $" + costoTotal);
+
         }
 
         cerrarButton.setOnClickListener(view -> finish());

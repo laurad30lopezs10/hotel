@@ -49,15 +49,16 @@ HotelDBHelper extends SQLiteOpenHelper {
 
 
         sqLiteDatabase.execSQL("CREATE TABLE " + ReservationSpaEntry.TABLE_NAME + " ( " +
-                ReservationSpaEntry.col_num_reservation+" INT NOT NULL, " +
+                ReservationSpaEntry.col_num_reservation+" INTEGER NOT NULL, " +
                 HuespedEntry.col_usuario+" TEXT NOT NULL, " +
-                ReservationSpaEntry.col_date_reservation+" DATE NOT NULL, " +
-                ReservationSpaEntry.col_zone_spa+" INT NOT NULL, "+
-                SpaEntry.col_cod_zone+" INT NOT NULL, "+
+                ReservationSpaEntry.start_date_reservation+" DATE NOT NULL, " +
+                ReservationSpaEntry.end_date_reservation+" DATE NOT NULL, " +
+                ReservationSpaEntry.col_zone_spa+" INTEGER NOT NULL, "+
+                SpaEntry.col_name_zone+" TEXT NOT NULL, "+
                 "PRIMARY KEY ("+ReservationSpaEntry.col_num_reservation+","+HuespedEntry.col_usuario+","+
-                ReservationSpaEntry.col_date_reservation+"),"+
+                ReservationSpaEntry.start_date_reservation+","+ReservationSpaEntry.end_date_reservation+"),"+
                 " FOREIGN KEY ("+HuespedEntry.col_usuario+") REFERENCES "+HuespedEntry.TABLE_NAME+"("+ HuespedEntry.col_usuario+") ON DELETE CASCADE," +
-                " FOREIGN KEY ("+SpaEntry.col_cod_zone+") REFERENCES "+SpaEntry.TABLE_NAME+"("+SpaEntry.col_cod_zone+") ON DELETE CASCADE"+")");
+                " FOREIGN KEY ("+SpaEntry.col_name_zone+") REFERENCES "+SpaEntry.TABLE_NAME+"("+SpaEntry.col_name_zone+") ON DELETE CASCADE"+")");
     }
 
     @Override
