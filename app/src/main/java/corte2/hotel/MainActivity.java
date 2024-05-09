@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // Si las credenciales son válidas, iniciar la actividad SpaActivity
                 Huesped hdp = new Huesped(cursor);
                 Intent linear = new Intent(this, SpaActivity.class);
+                linear.putExtra("usuario", usuario.getText().toString());
                 startActivity(linear);
             } else {
                 // Si las credenciales son inválidas, mostrar un mensaje de error

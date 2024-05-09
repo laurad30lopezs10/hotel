@@ -9,14 +9,14 @@ import corte2.hotel.data.ReservationSpaContract.ReservationSpaEntry;
 import corte2.hotel.data.HuespedContract.HuespedEntry;
 import corte2.hotel.data.SpaContract.SpaEntry;
 public class ReservationSpa {
-    private int num_reservation;
+    private long num_reservation;
     private String usuario;
     private Date start_date;
     private Date end_date;
 
     private int Spa;
 
-    public ReservationSpa(int num_reservation, Date start_date, Date end_date, String usuario, int Spa) {
+    public ReservationSpa( long num_reservation, Date start_date, Date end_date, String usuario, int Spa) {
         this.num_reservation = num_reservation;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -45,7 +45,7 @@ public class ReservationSpa {
         this.Spa = cursor.getInt( cursor.getColumnIndex( SpaContract.SpaEntry.col_cod_zone));
     }
 
-    public int getNum_reservation() {
+    public long getNum_reservation() {
         return num_reservation;
     }
 

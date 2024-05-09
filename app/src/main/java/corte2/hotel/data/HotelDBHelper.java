@@ -146,8 +146,20 @@ HotelDBHelper extends SQLiteOpenHelper {
         return c;
     }
 
+  public Cursor getReservationsByUser(String usuario) {
+    Cursor c = getReadableDatabase().query(
+      ReservationSpaEntry.TABLE_NAME,
+      null,
+      ReservationSpaEntry.col_usuario + " LIKE?",
+      new String[]{usuario},
+      null,
+      null,
+      null);
+    return c;
+  }
 
-    public int deleteHuesped(String user) {
+
+  public int deleteHuesped(String user) {
         return getWritableDatabase().delete(
                 HuespedEntry.TABLE_NAME,
                 HuespedEntry.col_usuario + " LIKE ?",
