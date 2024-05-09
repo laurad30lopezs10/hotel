@@ -1,7 +1,9 @@
 package corte2.hotel;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,27 +30,17 @@ public class ReciboReservaActivity extends AppCompatActivity {
 
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_recibo_reserva);
 
-
         db = new HotelDBHelper(this);
-
         fechaInicioTextView = findViewById(R.id.fechaInicioTextView);
-
         fechaFinTextView = findViewById(R.id.fechaFinTextView);
-
         costoTextView = findViewById(R.id.costoTextView);
-
         cerrarButton = findViewById(R.id.cerrarButton);
 
-
         // Extract data from ReservationSpa table
-
         Cursor cursor = db.getAllReservations();
 
         if (cursor.moveToFirst()) {
@@ -69,7 +61,6 @@ public class ReciboReservaActivity extends AppCompatActivity {
             // Calcular el costo total de la reserva
             int totalPrice = durationInDays * price;
 
-
             // Mostrar los datos en los TextViews
             fechaInicioTextView.setText(startDate);
             fechaFinTextView.setText(endDate);
@@ -77,8 +68,19 @@ public class ReciboReservaActivity extends AppCompatActivity {
         }
 
         cursor.close();
-
         db.close();
 
+        // Agregar un listener al botón "cerrar"
+        cerrarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Lanzar la actividad MainActivity
+                Intent intent = new Intent(ReciboReservaActivity.this, MainActivity.class);
+                startActivity(intent);
+                // Finalizar la actividad actual
+                finish();
+            }
+        });
     }
+
 }
