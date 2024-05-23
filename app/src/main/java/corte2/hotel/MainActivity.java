@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import corte2.hotel.data.HotelDBHelper;
 import corte2.hotel.data.Huesped;
+import corte2.hotel.data.Telefono;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     // Declaración de variables
@@ -32,12 +33,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Telefono googleUser = new Telefono("google", 5939400);
+        Huesped nuevoUser = new Huesped("google", "123456", "user", "press@google.com");
+
+
+
         // Vinculación de variables con elementos de diseño
         usuario = findViewById(R.id.UsuarioHuesped);
         password = findViewById(R.id.PasswordHuesped);
         Ingresar = findViewById(R.id.buttonIngresar);
         irRegistrar = findViewById(R.id.buttonRegistrar);
         db = new HotelDBHelper(this); // Inicializar el ayudante de la base de datos
+
+        db.saveHuesped(nuevoUser, googleUser);
 
         // Establecer oyentes de clic para los botones
         Ingresar.setOnClickListener(this);
